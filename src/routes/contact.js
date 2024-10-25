@@ -4,11 +4,11 @@ const { addContact, getContacts, updateContact, deleteContact } = require('../co
 const { validateContact } = require('../middleware/validation');
 const authMiddleware = require('../middleware/authMiddleware');
 
-router.use(authMiddleware); // Ensure all routes are protected
+router.use(authMiddleware); 
 
-router.post('/', validateContact, addContact); // Add validation middleware here
+router.post('/', validateContact, addContact); 
 router.get('/', getContacts);
-router.put('/:id', validateContact, updateContact); // Add validation middleware here
+router.put('/:id', validateContact, updateContact); 
 router.delete('/:id', deleteContact);
 
 module.exports = router;

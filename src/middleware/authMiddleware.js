@@ -10,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Attach the authenticated user to the request object
+       
         req.user = await User.findByPk(decoded.id);
 
         next();

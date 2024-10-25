@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const { sendVerificationEmail, sendResetCode } = require('../services/emailService'); // Implement these functions
+const { sendVerificationEmail, sendResetCode } = require('../services/emailService'); 
 
 // Register user
 exports.register = async (req, res) => {
@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
 
 // Verify email
 exports.verifyEmail = async (req, res) => {
-    const { email } = req.params; // Implement a way to verify through a unique token
+    const { email } = req.params; 
     const user = await User.findOne({ where: { email } });
     if (!user) return res.status(404).json({ message: 'User not found' });
 
@@ -47,7 +47,7 @@ exports.requestPasswordReset = async (req, res) => {
 
     user.resetCode = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit code
     await user.save();
-    sendResetCode(user.email, user.resetCode); // Implement this function
+    sendResetCode(user.email, user.resetCode); 
     res.json({ message: 'Password reset code sent to email' });
 };
 

@@ -49,7 +49,7 @@ exports.deleteContact = async (req, res) => {
     const contact = await Contact.findByPk(id);
     if (!contact || contact.isDeleted) return res.status(404).json({ message: 'Contact not found' });
 
-    contact.isDeleted = true; // Soft delete
+    contact.isDeleted = true; 
     await contact.save();
     res.json({ message: 'Contact deleted successfully' });
 };
